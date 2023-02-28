@@ -4,7 +4,7 @@
 
 def main():
     # open file for writing
-    cities_file = open('cities.txt', 'w')
+    cities_file = open('Lab03/cities.txt', 'w')
 
     # get number of cities
     num_cities = int(input('How many cities do you want to enter? '))

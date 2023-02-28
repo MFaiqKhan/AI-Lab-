@@ -4,7 +4,7 @@
 
 def main():
     # open file for writing
-    student_file = open('student.txt', 'a')
+    student_file = open('Lab03/student.txt', 'a')
     student_file.write("Now we are AI students")
     student_file.write('\n')
     # close the file

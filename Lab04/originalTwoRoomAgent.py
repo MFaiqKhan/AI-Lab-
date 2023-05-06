@@ -97,6 +97,16 @@ class VaccumAgent(Agent.Agent):
             return "right"
         return "left"
     
+ # The sense method in the VaccumAgent class is responsible for allowing the agent to perceive the current state of the environment. 
+ # It takes the environment as an input argument and stores the reference to the environment inside the agent object.
+    
+ # def sense(self, environment): defines the method sense with two parameters: self and environment. 
+ # self is a reference to the instance of the VaccumAgent class, and environment is the input parameter representing the environment object, 
+ # which is an instance of the TwoRoomVaccumCleanerEnvironment class.
+ # self.environment = environment stores the reference to the environment object inside the agent object as an instance variable. 
+ # This allows the agent to access the environment's properties and methods, such as the current room's status and location, 
+ # which are used in the act method to make decisions based on the current perceptual input.
+    
 
 # main function
 if __name__ == '__main__':
@@ -108,5 +118,15 @@ if __name__ == '__main__':
 
 
 
-
+"""
+A simple reflex agent is the most basic of the intelligent agents out there. It performs actionsbased on a
+current situation. When something happens in the environment of a simple reflex agent, the agentquickly scans its knowledge base for how to respond to the situation at-hand based on pre-determined rules.
+It would be like a home thermostat recognizing that if the temperature increases to 75 degrees inthe house, the thermostat is prompted to kick on. 
+It doesn't need to know what happened with the temperatureyesterday or what might happen tomorrow. 
+Instead, it operates based on the idea that if _____happens,_____ is the response.Simple reflex agents are just that - simple. 
+They cannot compute complex equations or solvecomplicatedproblems. They work only in environments that are fully-observable in the current percept,ignoring anypercept history. 
+If you have a smart light bulb, for example, set to turn on at 6 p.m. every night,the lightbulb will not recognize how the days are longer in summer and the lamp is not needed untilmuch later. 
+Itwill continue to turn the lamp on at 6 p.m. because that is the rule it follows. Simple reflex agentsare builton the condition-action rule.These agents simply decide actions based on their current percept. 
+By identifying that certainactions arewarranted in certain conditions,
+"""
 

@@ -107,6 +107,17 @@ class VaccumAgent(Agent.Agent):
  # This allows the agent to access the environment's properties and methods, such as the current room's status and location, 
  # which are used in the act method to make decisions based on the current perceptual input.
     
+ """
+ If you remove the sense method from the VaccumAgent class, the agent will not be able to perceive the environment's current state, 
+ and it will not have access to the environment's properties and methods. Consequently, the agent won't be able to make decisions based on the current perceptual input in the act method. 
+ This would lead to errors in the program execution.
+ In the provided code, the sense method is called in the executeStep method of the TwoRoomVaccumCleanerEnvironment class:
+ 
+ self.agent.sense(self) # calls the sense method of the agent object to get a perception of the current state of the environment
+
+ Moreover, the act method will also raise an error when trying to access the self.environment attribute, as it has not been assigned
+ """
+    
 
 # main function
 if __name__ == '__main__':

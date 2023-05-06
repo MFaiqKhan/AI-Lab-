@@ -1,3 +1,7 @@
+"""
+To convert the VaccumAgent to a model-based reflex agent, you need to maintain an internal state to keep track of the cleanliness status of each room. You can then update the agent's act method to consider the internal state while making decisions
+"""
+
 import time
 from com.environment import Environment
 from com.environment import Room
@@ -66,8 +70,11 @@ class NRoomVaccumCleanerEnvironment(Environment.Environment):
 
     def displayScore(self):
         print(f"Agent's score at step {self.step}: {self.score}")
+        
+        
+        
 
-
+"""
 class ModelBasedReflexVacuumAgent(Agent.Agent):
     def __init__(self):
         self.previous_action = "clean"
@@ -82,9 +89,53 @@ class ModelBasedReflexVacuumAgent(Agent.Agent):
 
         self.previous_action = next_action
         return next_action
+    """
+
+class ModelBasedReflexVaccumAgent(Agent.Agent):
+    def __init__(self):
+        self.room_status = {}
+
+   # def sense(self, environment):
+    #    self.environment = environment  # store the environment
+      #  location = self.environment.currentRoom.location
+     #   status = self.environment.currentRoom.status
+       # self.room_status[location] = status
+
+    def act(self):
+        location = self.environment.currentRoom.location
+        status = self.environment.currentRoom.status
+
+        if status == "dirty":
+            return "clean"
+        else:
+            next_location = (location + 1) % len(self.environment.rooms)
+            if self.room_status.get(next_location, None) != "clean":
+                return "right"
+            else:
+                return "left"
+            
+     """
+     This agent will not work properly, as it cannot update its internal state based on the environment's actual state. 
+     The agent's decisions will be based on the initial, incomplete knowledge of the environment, which may not be accurate. 
+     Since the agent cannot perceive the environment, it cannot update its internal model, and its performance will degrade.
+     In conclusion, taking the sensors away from a model-based reflex agent will prevent it from working effectively because it cannot maintain an accurate internal model of the environment.
+     """
+            
 
 if __name__ == "__main__":
-    agent = ModelBasedReflexVacuumAgent()
+    agent = ModelBasedReflexVaccumAgent()
     environment = NRoomVaccumCleanerEnvironment(agent, 10)
     environment.executeStep(10)
     print(f"Agent's score: {environment.score}")
+    
+    
+    
+  """ Is a full observable
+  A simple reflex agent acts only based on the current percept, ignoring the percept history. 
+  In the context of the vacuum cleaner problem, a simple reflex agent would take actions based on the current location and the dirt status of the room it's in. 
+  """
+
+"""
+A model-based reflex agent, on the other hand, can handle partially observable environments by maintaining an internal state based on the percept history. 
+In the case of the vacuum cleaner problem, a model-based reflex agent could keep track of the cleanliness status of each room
+"""

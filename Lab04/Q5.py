@@ -79,6 +79,43 @@ Instead, it relies on its internal model to make decisions and update room statu
 """
 
 """
+The act method in the code is responsible for deciding the action the ModelBasedReflexVaccumAgent should take based on the current state of the environment (represented by the internal model)
+Check if the current room ('status') is dirty:
+
+if self.model[self.currentRoom - 1]['status'] == 'dirty':
+
+If the room is dirty, update the model to set the room's status to 'clean', and set the action to 'clean':
+
+    self.updateModel(self.currentRoom, 'clean')
+    action = 'clean'
+
+If the room is not dirty (i.e., it's clean), update the model to ensure the room's status is 'clean':
+else:
+    self.updateModel(self.currentRoom, 'clean')
+
+If the agent is in the last room (i.e., the length of the model), set the current room to the first room (1) and set the action to 'left':
+
+    if self.currentRoom == len(self.model):
+        self.currentRoom = 1
+        action = 'left'
+
+If the agent is not in the last room, increment the current room by 1 and set the action to 'right':
+
+    else:
+        self.currentRoom += 1
+        action = 'right'
+
+Increment the step counter by 1:
+
+self.step += 1
+
+Call the displayPerception method to display the current room and its status:
+self.displayPerception()
+
+Return the decided action
+"""
+
+"""
 The agent uses this internal model to decide its actions based on the current room and its status. 
 For example, if the agent is in Room 1 and its status is 'dirty', the agent will clean the room and update the model accordingly. 
 The agent also uses the model to decide whether to move right or left, depending on the current room's position within the model.

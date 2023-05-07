@@ -78,6 +78,14 @@ This code snippet represents a simple, model-based reflex agent that does not us
 Instead, it relies on its internal model to make decisions and update room statuses.
 """
 
+"""
+The agent uses this internal model to decide its actions based on the current room and its status. 
+For example, if the agent is in Room 1 and its status is 'dirty', the agent will clean the room and update the model accordingly. 
+The agent also uses the model to decide whether to move right or left, depending on the current room's position within the model.
+This model-based approach allows the agent to make decisions without directly sensing the environment, as it relies on the internal 
+model to represent the state of the environment. However, this also means that the agent might not be well-suited for environments with 
+dynamic changes or uncertainties, as it relies solely on the pre-defined and updated model to make decisions.
+"""
     
     
 """ Is a full observable

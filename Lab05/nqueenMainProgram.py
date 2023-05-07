@@ -14,7 +14,7 @@ class Solution:
         def printBoard(board):
             for row in board:
                 print(" ".join(row))
-            print("\n")
+            print("\n" + "-" * (2 * n - 1)) # "-" * (2 * n - 1) means "-" repeated 2 * n - 1 times e.g. "-" * (2 * 4 - 1) = "-" * 7 = "-------"
 
         def backtrack(r): # a recursive function that takes in a row number r
             if r == n: # if r is equal to n, we have reached the end of the board means solution found
@@ -71,11 +71,16 @@ class Solution:
                 #printBoard(board)
 
         backtrack(0)
+        print(f"Total solutions found: {len(res)}")
+        for i, solution in enumerate(res):
+            print(f"Solution {i + 1}:")
+            printBoard(solution)
+
         return res
 
 # run the code
 n = 8
-print(Solution().solveNQueens(n))
+Solution().solveNQueens(n)
 
 
 """ 
